@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -35,7 +35,7 @@ public class Game
     private void createRooms()
     {
         Room derecha, izquierda, centro, arriba, abajo, porteriaArriba, porteriaAbajo;
-      
+
         // create the rooms
         derecha = new Room("La banda derecha buena zona para intentar un regate");
         izquierda = new Room("La banda izquierda prueba a hacer un dribling");
@@ -44,7 +44,7 @@ public class Game
         abajo = new Room("Estas en el area propia defensa ferrea y sin fisuras");
         porteriaArriba = new Room("El balon ha entrado en la porteria fuera telarañas");
         porteriaAbajo = new Room("Estas en tu porteria ten cuidado y no metas gol en propia puerta");
-        
+
         // initialise room exits
         derecha.setExits(null, null, null, centro);
         izquierda.setExits(null, centro, null, null);
@@ -66,7 +66,7 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -87,19 +87,8 @@ public class Game
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
-        if(currentRoom.northExit != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.eastExit != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.southExit != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.westExit != null) {
-            System.out.print("west ");
-        }
-        System.out.println();
+        printLocationInfo();
+
     }
 
     /**
@@ -182,19 +171,7 @@ public class Game
             currentRoom = nextRoom;
             System.out.println("You are " + currentRoom.getDescription());
             System.out.print("Exits: ");
-            if(currentRoom.northExit != null) {
-                System.out.print("north ");
-            }
-            if(currentRoom.eastExit != null) {
-                System.out.print("east ");
-            }
-            if(currentRoom.southExit != null) {
-                System.out.print("south ");
-            }
-            if(currentRoom.westExit != null) {
-                System.out.print("west ");
-            }
-            System.out.println();
+            printLocationInfo();
         }
     }
 
@@ -212,5 +189,22 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+
+    private void printLocationInfo()
+    {
+        if(currentRoom.northExit != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.eastExit != null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.southExit != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.westExit != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
     }
 }
