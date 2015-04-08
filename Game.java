@@ -34,23 +34,27 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room derecha, izquierda, centro, arriba, abajo, porteriaArriba, porteriaAbajo;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        derecha = new Room("La banda derecha buena zona para intentar un regate");
+        izquierda = new Room("La banda izquierda prueba a hacer un dribling");
+        centro = new Room("El centro del campo buena posicion para centrar a la banda");
+        arriba= new Room("Estas en el area contraria prueba a realizar un tiro, !!!!!oooooo!!!! es un balón no un melón ");
+        abajo = new Room("Estas en el area propia defensa ferrea y sin fisuras");
+        porteriaArriba = new Room("El balon ha entrado en la porteria fuera telarañas");
+        porteriaAbajo = new Room("Estas en tu porteria ten cuidado y no metas gol en propia puerta");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        derecha.setExits(null, null, null, centro);
+        izquierda.setExits(null, centro, null, null);
+        centro.setExits(arriba, derecha, abajo, izquierda);
+        arriba.setExits(porteriaArriba, null, centro, null);
+        abajo.setExits(centro, null, porteriaAbajo , null);
+        porteriaAbajo.setExits(abajo,null,null,null);
+        porteriaArriba.setExits(null,null,arriba,null);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = porteriaAbajo;  // start game outside
     }
 
     /**
@@ -77,8 +81,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Estas en el campo de juego hola Maldini que nos deparara el partido");
+        System.out.println("Bueno yo creo que sera un buen partido Julio Maldonado ");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
