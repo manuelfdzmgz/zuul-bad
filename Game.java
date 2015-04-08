@@ -85,8 +85,6 @@ public class Game
         System.out.println("Bueno yo creo que sera un buen partido Julio Maldonado ");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
         printLocationInfo();
 
     }
@@ -169,8 +167,6 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
             printLocationInfo();
         }
     }
@@ -193,6 +189,8 @@ public class Game
 
     private void printLocationInfo()
     {
+        System.out.println("You are " + currentRoom.getDescription());
+        System.out.print("Exits: ");
         if(currentRoom.northExit != null) {
             System.out.print("north ");
         }
