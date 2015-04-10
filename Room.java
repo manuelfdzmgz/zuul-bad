@@ -14,11 +14,13 @@
  */
 public class Room 
 {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private String description;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
+    private Room southEastExit;
+    private Room northEastExit;
 
     /**
      * Create a room described "description". Initially, it has
@@ -39,7 +41,7 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExits(Room north, Room east, Room south, Room west, Room southEast,Room northEast) 
     {
         if(north != null)
             northExit = north;
@@ -49,6 +51,10 @@ public class Room
             southExit = south;
         if(west != null)
             westExit = west;
+        if(southEast != null)
+            southEastExit = southEast;
+         if (northEast!= null)
+         northEastExit = northEast;
     }
 
     /**
@@ -57,6 +63,57 @@ public class Room
     public String getDescription()
     {
         return description;
+    }
+
+    public  Room getExit(String salida)
+    {
+        Room direccion = null;
+        switch(salida)
+        {
+            case "north":
+            direccion = northExit;
+            break;
+            case "south":
+            direccion = southExit;
+            break;
+            case "east":
+            direccion = eastExit;
+            break;
+            case "west":
+            direccion = westExit;
+            break;
+            case "southeast":
+            direccion = southEastExit;
+            break;
+            case "northeast":
+            direccion = northEastExit;
+
+        }
+        return direccion;
+    }
+
+    /**
+     * Return a description of the room's exits.
+     * For example: "Exits: north east west"
+     *
+     * @ return A description of the available exits.
+     */
+    public String getExitString()
+    {
+        String cadena = "";
+        if (northExit!=null)
+            cadena+= "north";
+        if (southExit!=null)
+            cadena+= "south";
+        if (eastExit!=null)
+            cadena+= "east";
+        if (westExit!=null)
+            cadena+= "west";
+        if (southEastExit!=null)
+            cadena+= "southEast";
+        if (northEastExit!=null)
+            cadena+="northeast";
+        return  cadena;
     }
 
 }
