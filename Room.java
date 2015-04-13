@@ -46,20 +46,22 @@ public class Room
         if(east != null)
             exits.put("east", east);
         if(south != null)
-           exits.put("south", east);
+            exits.put("south", east);
         if(west != null)
             exits.put("west", east);
         if(southEast != null)
-           exits.put("southeast", east);
+            exits.put("southeast", east);
         if (northEast!= null)
-         exits.put("northeast", east);
+            exits.put("northeast", east);
     }
+
     public void setExit(String direction, Room nextRoom)
     {
         exits.put(direction,nextRoom);
     }
+
     public  Room getExit(String direction)
-    
+
     {
         return exits.get(direction);
     }
@@ -122,6 +124,7 @@ public class Room
             cadena+="northeast";
         return  cadena;
     }
+
     public String getExitsString()
     {
         Set<String>namesOfDirection = exits.keySet();
@@ -130,7 +133,7 @@ public class Room
         {
             exitsDescription +=direction + "";
         }
-    
+
         return exitsDescription;
     } 
 
