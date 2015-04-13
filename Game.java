@@ -45,6 +45,22 @@ public class Game
         porteriaArriba = new Room("El balon ha entrado en la porteria fuera telarañas");
         porteriaAbajo = new Room("Estas en tu porteria ten cuidado y no metas gol en propia puerta");
 
+        // initialise room exit
+        derecha.setExit("west",centro);
+        izquierda.setExit("east", centro);
+        izquierda.setExit("southeast",abajo);
+        izquierda.setExit("northeast",arriba);
+        centro.setExit("north",arriba);
+        centro.setExit("south",abajo);
+        centro.setExit("east",derecha);
+        centro.setExit("west",izquierda);
+        arriba.setExit("south",centro);
+        arriba.setExit("north",porteriaArriba);
+        porteriaArriba.setExit("south",arriba);
+        abajo.setExit("north",centro);
+        abajo.setExit("south",porteriaAbajo);
+        porteriaAbajo.setExit("north",arriba);
+
         // initialise room exits
         derecha.setExits(null, null, null, centro, null,null);
         izquierda.setExits(null, centro, null, null,abajo,arriba);
@@ -191,9 +207,9 @@ public class Game
             System.out.print("west ");
         }
         if (currentRoom.getExit("southwest") != null)
-        System.out.print("southEast");
+            System.out.print("southEast");
         if (currentRoom.getExit("northeast")!=null)
-        System.out.print("northeast");
+            System.out.print("northeast");
         System.out.println();
         currentRoom.getExitString();
     }
